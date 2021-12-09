@@ -1,0 +1,28 @@
+1. в <form> </form> 
+добавить: enctype="multipart/form-data" method="post" onsubmit="send(event, '... путь до папки ... /mail/send.php')"
+а так же скрытые поля:
+                        <input type="hidden" name="titleModal" value="Заказ товара">
+                        <input type="hidden" name="linkPage" value="https://site.ru">
+                        <input type="hidden" name="titlePage" value="Заголовок страницы">
+                        <input type="hidden" name="keyL" value="m">
+                        <input type="hidden" name="keyP" value="d">
+Образец в index.html
+
+2. в файл со скриптами добавить код из файла script.js - он обрабатывает нажатие кнопки type="submit" Отправить
+
+3. скопировать папку mail на сервер
+
+4. в файле config.php настроить данные для отправки почты.
+
+----------------------------
+
+Схема работы:
+в config.php хранится почта с которой будет отправлять письма с сайта, а так же логин и пароль.
+в целях защиты от ботов, первый символ почты и логина мы помещаем в скрытое поле в форме <input type="hidden" name="keyL" value="m">
+а первый символ пароля в скрытое поле в форме <input type="hidden" name="keyP" value="d">
+эти данные скомпануются в send.php
+
+Скрипт обрабатывает нажатие кнопки в форме - обращается к файлу send.php - файл делает отправку и посылает обратно в скрипт результат отправки.
+
+в send.php реализована обратное ответное письмо клиенту, отправившему запрос с формы (если он указал email),
+а так же резервная отправка письма через простую функцию mail (в php), если через smtp не получится.
