@@ -1,41 +1,23 @@
 
-    <div class="modal">
-        <input type="checkbox" class="modal__input" id="modal__input-order-product" />
-        <div class="modal__body modal__body-parent">
-            <div class="modal__body modal__body-child">
-                <div class="modal__head">
-                    <div class="modal__title">Заказать товар</div>
-                    <label for="modal__input-order-product" class="modal__close-in"><img src="/img/icons/icons-modal-close.svg" alt="icon-close"></label>
-                </div>
-                <div class="modal__content">
+    <form class="modal__form" enctype="multipart/form-data" method="post" onsubmit="send(event, '/mail/send.php')">
+        <input type="hidden" name="titleModal" value="Заказ товара">
+        <input type="hidden" name="linkPage" value="https://site.ru">
+        <input type="hidden" name="titlePage" value="Заголовок страницы">
+        <input type="hidden" name="keyL" value="m">
+        <input type="hidden" name="keyP" value="d">
 
-                    <form class="modal__form" enctype="multipart/form-data" method="post" onsubmit="send(event, '/mail/send.php')">
-                        <input type="hidden" name="titleModal" value="Заказ товара">
-                        <input type="hidden" name="linkPage" value="https://site.ru">
-                        <input type="hidden" name="titlePage" value="Заголовок страницы">
-                        <input type="hidden" name="keyL" value="m">
-                        <input type="hidden" name="keyP" value="d">
+        <input class="modal__form-input" type="text" name="name" placeholder="Ваше имя">
+        <input class="modal__form-input" type="tel" name="phone" placeholder="Телефон">
+        <input class="modal__form-input" type="email" name="email" placeholder="Ваш email">
+        <textarea class="modal__form-input" name="text" placeholder="Сообщение"></textarea>
 
-                        <input class="modal__form-input" type="text" name="name" placeholder="Ваше имя">
-                        <input class="modal__form-input" type="tel" name="phone" placeholder="Телефон">
-                        <input class="modal__form-input" type="email" name="email" placeholder="Ваш email">
-                        <textarea class="modal__form-input" name="text" placeholder="Сообщение"></textarea>
+        <fieldset class="modal__form-buttons">
+            <button class="modal__form-send">Отправить</button>
+        </fieldset>
 
-                        <fieldset class="modal__form-buttons">
-                            <button class="modal__form-send">Отправить</button>
-                        </fieldset>
-
-                        <fieldset class="modal__form-policy">
-                            <input id="chek-order-product" type="checkbox" name="policy" checked="checked" required>
-                            <label class="modal__form-chek-policy" for="chek-order-product"></label>
-                            <label class="modal__form-label-policy" for="chek-order-product"> Я согласен на обработку моих персональных данных *</label>
-                        </fieldset>
-                    </form>
-
-                </div>
-                <div class="modal__footer">
-                    <div class="modal__link-policy"><a href="#" target="_blank">* Политика обработки персональных данных</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <fieldset class="modal__form-policy">
+            <input id="chek-order-product" type="checkbox" name="policy" checked="checked" required>
+            <label class="modal__form-chek-policy" for="chek-order-product"></label>
+            <label class="modal__form-label-policy" for="chek-order-product"> Я согласен на обработку моих персональных данных *</label>
+        </fieldset>
+    </form>
